@@ -39,14 +39,15 @@ var (
 	}
 )
 
-func compare(op string, a, b interface{}) bool {
-	f, ok := operatorMapping[op]
+// Compare "left" and "right" using convert comparision "operator" string
+func Compare(operator string, a, b interface{}) bool {
+	f, ok := operatorMapping[operator]
 	if !ok {
 		keys := make([]string, 0, len(operatorMapping))
 		for k := range operatorMapping {
 			keys = append(keys, k)
 		}
-		panic(fmt.Sprintf("Invalid operator! The parsed operator should be in ['%s'], received ['%s']", strings.Join(keys, "','"), op))
+		panic(fmt.Sprintf("Invalid operator! The parsed operator should be in ['%s'], received ['%s']", strings.Join(keys, "','"), operator))
 	}
 	return f(a, b)
 }
