@@ -39,7 +39,8 @@ var (
 	}
 )
 
-func compare(op string, a, b interface{}) bool {
+// Compare "left" and "right" using convert comparision "operator" string
+func Compare(operator string, a, b interface{}) bool {
 	f, ok := operatorMapping[op]
 	if !ok {
 		keys := make([]string, 0, len(operatorMapping))
